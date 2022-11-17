@@ -1,0 +1,136 @@
+public class Main {
+    public static void main(String[] args) {
+
+        String word = "misia";
+        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Write a single letter:");
+        int life = 6;
+        int systemLife = 0;
+//        char letter = scanner.next().charAt(0);
+        char[] tab = {'m', 'i', 's', 'i', 'a'};
+        int whereIsThisLetterInWord;
+
+        // This is changing letters for 'x'.
+        for (int i = 0; i < word.length(); i++) {
+                tab[i] = 'x';
+            }
+        // This is changing letters for 'x'.
+
+
+//        for (int i = 0; i < word.length(); i++) {
+//            whereIsThisLetterInWord = word.indexOf(letter, i);
+//
+//            if (whereIsThisLetterInWord == i) {
+//                tab[i] = letter;
+//                systemLife = systemLife + 1;
+//            }
+//        }
+//        if (systemLife == 0) {
+//            life = (life - 1);
+//            HaningMan(life);
+//            System.out.println("You have " + life + " more tries!");
+//        } else {
+//            systemLife = 0;
+//
+//        }
+//        System.out.println(tab);
+
+        do {
+            System.out.println("Write a single letter:");
+            char letter2 = scanner.next().charAt(0);
+
+            for (int i = 0; i < word.length(); i++) {
+                whereIsThisLetterInWord = word.indexOf(letter2, i);
+
+                if (whereIsThisLetterInWord == i) {
+                    tab[i] = letter2;
+                    systemLife = systemLife + 1;
+                }
+            }
+            if (systemLife == 0) {
+                life = (life - 1);
+                HaningMan(life);
+                System.out.println("You have " + life + " more tries!");
+
+            } else {
+                systemLife = 0;
+                System.out.println(tab);
+                System.out.println(systemLife);
+
+            }
+        }
+        while (true);
+
+
+    }
+
+    public static void HaningMan(int howManyLifesLeft) {
+
+        if (howManyLifesLeft == 5) {
+            System.out.println("  ");
+            System.out.println("       ");
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println("__");
+            System.out.println();
+
+        }
+
+        if (howManyLifesLeft == 4) {
+            System.out.println("  ");
+            System.out.println(" |      ");
+            System.out.println(" |");
+            System.out.println(" |");
+            System.out.println(" |");
+            System.out.println("_|_");
+            System.out.println();
+        }
+
+        if (howManyLifesLeft == 3) {
+            System.out.println("  _______ ");
+            System.out.println(" |      | ");
+            System.out.println(" |");
+            System.out.println(" |");
+            System.out.println(" |");
+            System.out.println("_|_");
+            System.out.println();
+        }
+
+        if (howManyLifesLeft == 2) {
+            System.out.println("  _______ ");
+            System.out.println(" |      | ");
+            System.out.println(" |    (ʘ‸ʘ) ");
+            System.out.println(" |");
+            System.out.println(" |");
+            System.out.println("_|_");
+            System.out.println();
+                 }
+
+        if (howManyLifesLeft == 1) {
+            System.out.println("  _______ ");
+            System.out.println(" |      | ");
+            System.out.println(" |    (ʘ‸ʘ) ");
+            System.out.println(" |   /|  |\\");
+            System.out.println(" |");
+            System.out.println("_|_");
+            System.out.println();
+                }
+
+        if (howManyLifesLeft == 0) {
+            System.out.println("  _______ ");
+            System.out.println(" |      | ");
+            System.out.println(" |    (ʘ‸ʘ) ");
+            System.out.println(" |   /|  |\\");
+            System.out.println(" |    /  \\ ");
+            System.out.println("_|_");
+            System.out.println();
+            System.out.println(" GAME OVER");
+            System.exit(1);
+
+        }
+
+
+    }
+}
+
