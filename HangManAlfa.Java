@@ -40,6 +40,13 @@ public class Main {
             System.out.println("Write a single letter:");
             char letter2 = scanner.next().charAt(0);
 
+            // Now uppercase letters are also ok.
+            if (letter2 >='A' && letter2 <='Z')
+            {
+                letter2 = (char)(letter2 + 32);
+            }
+            // Now uppercase letters are also ok.
+
             for (int i = 0; i < word.length(); i++) {
                 whereIsThisLetterInWord = word.indexOf(letter2, i);
 
@@ -165,3 +172,4 @@ public class Main {
         // Random picker from 0-20
     }
 }
+
