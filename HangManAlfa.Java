@@ -7,13 +7,12 @@ public class Main {
 
         // Word picker.
         String word = randomWord();
-        randomWord();
         Scanner scanner = new Scanner(System.in);
         // Word picker.
 
-        //Max life
+        //Max lifes
         int life = 6;
-        //Max life
+        //Max lifes
 
         // System life, like boolean, 0-1.
         int systemLife = 0;
@@ -25,11 +24,14 @@ public class Main {
 
         int whereIsThisLetterInWord;
 
-        // This is changing letters for 'x'.
+        // This is changing letters for 'x' and ignoring space.
         for (int i = 0; i < word.length(); i++) {
+            if (!(tab[i] == ' ')){
                 tab[i] = 'x';
             }
-        // This is changing letters for 'x'.
+            }
+        // This is changing letters for 'x' and ignoring space.
+
 
         // Creating 'new' word for comparing if there is any x left to finish.
         String word1 = String.valueOf(tab);
@@ -160,8 +162,8 @@ public class Main {
 
         // Random picker from 0-20
 
-        String picker[] = {"misia", "ania", "stefan", "aksamit", "forum", "paweł", "okoń", "telefon", "pudełko", "słowo",
-                "prywatnie", "wygrywanie", "obciążanie", "szklanka", "monitor", "zeszyt", "github", "link", "fraza", "białystok"
+        String picker[] = {"misia", "ania", "stefan syn stefana", "aksamit", "forum", "paweł", "okoń to ryba", "telefon", "pudełko", "słowo",
+                "prywatnie", "wygrywanie", "obciążanie", "szklanka wody", "monitor paronamicznt", "zeszyt w klratkę", "github", "link", "fraza", "białystok"
         };
 
         Random selector = new Random();
@@ -172,4 +174,3 @@ public class Main {
         // Random picker from 0-20
     }
 }
-
