@@ -1,10 +1,15 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
 
-        String word = "misia";
+
+        // Word picker.
+        String word = randomWord();
+        randomWord();
         Scanner scanner = new Scanner(System.in);
+        // Word picker.
 
         //Max life
         int life = 6;
@@ -14,7 +19,10 @@ public class Main {
         int systemLife = 0;
         // System life, like boolean, 0-1.
 
-        char[] tab = {'m', 'i', 's', 'i', 'a'};
+        // Changing word  string to char.
+        char[] tab = word.toCharArray();
+        // Changing word  string to char.
+
         int whereIsThisLetterInWord;
 
         // This is changing letters for 'x'.
@@ -22,6 +30,11 @@ public class Main {
                 tab[i] = 'x';
             }
         // This is changing letters for 'x'.
+
+        // Creating 'new' word for comparing if there is any x left to finish.
+        String word1 = String.valueOf(tab);
+        tab = word1.toCharArray();
+        // Creating 'new' word for comparing if there is any x left to finish.
 
         do {
             System.out.println("Write a single letter:");
@@ -38,16 +51,23 @@ public class Main {
             if (systemLife == 0) {
                 life = (life - 1);
                 HaningMan(life);
+                System.out.println(tab);
                 System.out.println("You have " + life + " more tries!");
 
             } else {
                 systemLife = 0;
+                HaningMan(life);
                 System.out.println(tab);
-                System.out.println(systemLife);
 
             }
 
-
+            // Comparing if there is any x left to finish.
+            word1 = String.valueOf(tab);
+            if (!word1.contains("x")){
+                System.out.println("Congratulations!");
+                System.exit(1);
+            }
+            // Comparing if there is any x left to finish.
 
         }
         while (true);
@@ -55,8 +75,10 @@ public class Main {
 
     }
 
+
     public static void HaningMan(int howManyLifesLeft) {
 // Stick man graph lifes left.
+
         if (howManyLifesLeft == 5) {
             System.out.println("  ");
             System.out.println("       ");
@@ -125,5 +147,21 @@ public class Main {
 
 
     }
-}
 
+    public static String randomWord(){
+
+
+        // Random picker from 0-20
+
+        String picker[] = {"misia", "ania", "stefan", "aksamit", "forum", "paweł", "okoń", "telefon", "pudełko", "słowo",
+                "prywatnie", "wygrywanie", "obciążanie", "szklanka", "monitor", "zeszyt", "github", "link", "fraza", "białystok"
+        };
+
+        Random selector = new Random();
+        int randomSelector = selector.nextInt(20);
+        String word = picker[randomSelector];
+        return word;
+
+        // Random picker from 0-20
+    }
+}
