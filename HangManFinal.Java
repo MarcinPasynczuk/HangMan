@@ -59,6 +59,12 @@ public class Main {
             }
             if (systemLife == 0) {
                 life = (life - 1);
+                
+                // It will give you a word when you failed.
+                if (life == 0){
+                    System.out.println("Your word was: "+ word);
+                }
+                // It will give you a word when you failed.
                 HaningMan(life);
                 System.out.println(tab);
                 System.out.println("You have " + life + " more tries!");
@@ -147,7 +153,6 @@ public class Main {
             System.out.println(" |    /  \\ ");
             System.out.println("_|_");
             System.out.println();
-            System.out.println(" GAME OVER YOUR WORD WAS: " + randomWord());
             System.out.println(" GAME OVER");
             System.exit(1);
 
@@ -174,3 +179,4 @@ public class Main {
         // Random picker from 0-20
     }
 }
+
