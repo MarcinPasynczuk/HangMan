@@ -169,7 +169,7 @@ public class Main {
         // Random picker from 0-20
 
         String[] fromWhereYouCanPickWord = {"misia", "ania", "stefan syn stefana", "aksamit", "forum", "paweł", "okoń to ryba", "telefon", "pudełko", "słowo",
-                "prywatnie", "wygrywanie", "obciążanie", "szklanka wody", "monitor paronamicznt", "zeszyt w klratkę", "github", "link", "fraza", "białystok"
+                "prywatnie", "wygrywanie", "obciążanie", "szklanka wody", "monitor panoramiczny", "zeszyt w kratkę", "github", "link", "fraza", "białystok"
         };
 
         Random selector = new Random();
