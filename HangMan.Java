@@ -169,7 +169,7 @@ public class HangMan {
         // Random picker from 0-20
 
         String[] fromWhereYouCanPickWord = {"misia", "ania", "stefan syn stefana", "aksamit", "forum", "paweł", "okoń to ryba", "telefon", "pudełko", "słowo",
-                "prywatnie", "wygrywanie", "obciążanie", "szklanka wody", "monitor panoramiczny", "zeszyt w kratkę", "github", "link", "fraza", "białystok"
+                "prywatnie", "wygrywanie", "obciążanie", "szklanka wody", "monitor panoramiczny", "zeszyt w kratkę", "github", "link", "fraza", "London"
         };
 
         Random selector = new Random();
