@@ -1,0 +1,88 @@
+ <style>
+ #hangman-image {
+    font-family: monospace;
+    font-size: 14px;
+    white-space: pre-wrap;
+}
+</style>
+
+<div class="d-flex justify-content-between">
+    <h2>Hangman Game</h2>
+    <div>        
+        <a href="https://github.com/MarcinPasynczuk/HangMan/tree/main" target="_blank" class="btn btn-info">View code</a>
+    </div>
+</div>
+    <p id="word-area"></p>
+    <p id="failed-guess-count">Failed attempts: 0</p>
+
+    <input type="text" id="letter-input" maxlength="1">
+    <button id="guess-button">Guess</button>
+    <button id="restart-button">Restart</button>
+    <pre id="hangman-image"></pre>
+    <p id="game-status"></p>
+    <script>
+    
+    var hangmanImages = [
+        "  _______ \n |      | \n |    (x.x) \n |   /|  |\\ \n |    /  \\ \n_|_\n\n GAME OVER\n",
+        "  _______ \n |      | \n |    (o.o) \n |   /|  |\\ \n |       \n_|_\n\n",
+        "  _______ \n |      | \n |    (o.o) \n |       \n |       \n_|_\n\n",
+        "  _______ \n |      \n |  \n |       \n |       \n_|_\n\n",
+        "         \n         \n         \n         \n         \n_._\n\n",
+        ""
+    ];
+    var hangmanNoImage = [
+        ""
+    ];
+
+    function updateHangmanImage(howManyLifesLeft) {
+        $("#hangman-image").text(hangmanImages[howManyLifesLeft]);
+    }
+    
+    var failedAttempts = 0;
+    
+        function startGame() {
+            $.post("/hangman/start", function(data) {
+                $("#word-area").text(data);
+                failedAttempts = 0;                
+                $("#failed-guess-count").text("Failed attempts: 0");
+                $("#game-status").text("");
+            });
+        }
+
+        
+        function guessLetter() {
+            var letter = $("#letter-input").val().toLowerCase();
+            var guessWasCorrect = false;
+            $.post("/hangman/guess/" + letter, function(data, status, xhr) {
+                if (data.startsWith("Congratulations")) {
+                    $("#game-status").text(data);
+                } else if (data.startsWith("Game over")) {
+                    $("#game-status").text(data);
+                    updateHangmanImage(0);
+                } else {
+                    if (data.includes(letter)) {
+                        guessWasCorrect = true;
+                    }
+                    if (!guessWasCorrect) {
+                        failedAttempts++;
+                        updateHangmanImage(6 - failedAttempts);
+                    }
+                    $("#word-area").text(data);
+                    $("#failed-guess-count").text("Failed attempts: " + failedAttempts);
+                }
+            });
+        }
+        $(document).ready(function() {
+            startGame();
+
+            $("#guess-button").click(function() {
+                guessLetter();
+                $("#letter-input").val("");
+            });
+
+            $("#restart-button").click(function() {
+                $("#hangman-image").text(hangmanNoImage[0]);
+                startGame();
+            });
+        });
+    </script>
